@@ -1,0 +1,74 @@
+palavra = "bicicleta"
+letras = []
+erro = 0
+ganhou = False
+
+while True:
+
+    for letra in palavra:
+        if letra in letras:
+            print(letra, end=" ")
+        else:
+            print("_", end=" ")
+    print("")
+    tentativa = input("Escolha uma letra: ")
+    letras.append(tentativa)
+
+    if tentativa not in palavra:
+        erro += 1
+
+        if erro == 1:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |            ")
+            print(" |            ")
+            print(" |            ")
+        if erro == 2:
+            print(" |      (_)   ")
+            print(" |      /     ")
+            print(" |            ")
+            print(" |            ")
+
+        if erro == 3:
+            print(" |      (_)   ")
+            print(" |      /|    ")
+            print(" |            ")
+            print(" |            ")
+
+        if erro == 4:
+            print(" |      (_)   ")
+            print(" |      /|\   ")
+            print(" |            ")
+            print(" |            ")
+
+        if erro == 5:
+            print(" |      (_)   ")
+            print(" |      /|\   ")
+            print(" |       |    ")
+            print(" |            ")
+
+        if erro == 6:
+            print(" |      (_)   ")
+            print(" |      /|\   ")
+            print(" |       |    ")
+            print(" |      /     ")
+
+        if erro == 7:
+            print(" |      (_)   ")
+            print(" |      /|\   ")
+            print(" |       |    ")
+            print(" |      / \   ")
+
+
+    ganhou = True
+    for letra in palavra:
+        if letra not in letras:
+            ganhou = False
+
+    if erro == 8 or ganhou:
+        break
+if ganhou:
+    print(f"Você acertou a palavra {palavra}!")
+else:
+    print(f"Você perdeu! A palavra era: {palavra}")
