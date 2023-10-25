@@ -1,0 +1,71 @@
+class Pessoa:
+    def __init__(self, N, I, P):
+        self.nome = N
+        self.idade = I
+        self.peso = P
+        self.comendo = False
+        self.dormindo = False
+        self.andando = False
+
+
+    def andar(self):
+        if self.dormindo == True:
+            print(f"{self.nome} precisa tá acordado pra poder andar")
+        else:
+            print(f"{self.nome} tá andando")
+
+    def comer(self, comida):
+        self.comida = comida
+        self.comendo = True
+        if self.comendo == True:
+            print(f"{self.nome} tá comendo {self.comida}")
+        if self.dormindo == True:
+            print(f"{self.nome} precisa tá acordado pra comer")
+        else:
+            if self.andando == True:
+                print(f"{self.nome} precisa tá parado pra poder comer")
+            else:
+                print(f"{self.nome} já tá comendo {self.comida}")
+
+
+
+    def dormir(self):
+        self.dormindo = True
+        if self.dormindo == False:
+            print(f"{self.nome} dormiu")
+            self.dormindo = True
+        else:
+            if self.comendo == True:
+                print(f"{self.nome} não pode dormir, pois está comendo")
+            else:
+                if self.andando == True:
+                    print(f"{self.nome} não pode dormir, pois tá andando")
+                else:
+                    print(f"{self.nome} já ta dormindo")
+
+    def parou_comer (self):
+        if self.comendo == True:
+            print(f"agora {self.nome} parou de comer")
+        else:
+            print(f"{self.nome} já ta comendo {self.comida}")
+    def parou_andar(self):
+        if self.andando == True:
+            print(f"{self.nome} parou de andar")
+        else:
+            print(f"{self.nome} já ta andando")
+
+    def parou_dormir(self):
+        if self.dormindo == True:
+            print(f"{self.nome} acordou")
+        else:
+            print(f"{self.nome} já esta acordado")
+x = Pessoa ("Rodrigo", 100, 27)
+
+x.comer("feijao")
+x.dormir()
+x.parou_comer()
+x.dormir()
+x.parou_dormir()
+x.andar()
+
+
