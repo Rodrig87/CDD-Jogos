@@ -12,60 +12,60 @@ class Pessoa:
         if self.dormindo == True:
             print(f"{self.nome} precisa tá acordado pra poder andar")
         else:
-            print(f"{self.nome} tá andando")
+            if self.comendo == True:
+                print(f"{self.nome} não pode andar, pois está comendo")
+            else:
+                if self.andando != True:
+                    print(f"{self.nome} começou a andar")
+                    self.andando = True
+                else:
+                    print(f"{self.nome} já está andando")
+    def comer(self):
 
-    def comer(self, comida):
-        self.comida = comida
-        self.comendo = True
-        if self.comendo == True:
-            print(f"{self.nome} tá comendo {self.comida}")
         if self.dormindo == True:
             print(f"{self.nome} precisa tá acordado pra comer")
         else:
             if self.andando == True:
                 print(f"{self.nome} precisa tá parado pra poder comer")
             else:
-                print(f"{self.nome} já tá comendo {self.comida}")
-
+                if self.comendo != True:
+                    print(f"{self.nome} começou a comer")
+                    self.comendo = True
+                else:
+                    print(f"{self.nome} já está comendo")
 
 
     def dormir(self):
-        self.dormindo = True
-        if self.dormindo == False:
-            print(f"{self.nome} dormiu")
-            self.dormindo = True
+        if self.comendo == True:
+             print(f"{self.nome} não pode dormir, pois está comendo")
         else:
-            if self.comendo == True:
-                print(f"{self.nome} não pode dormir, pois está comendo")
+            if self.andando == True:
+                 print(f"{self.nome} não pode dormir, pois tá andando")
             else:
-                if self.andando == True:
-                    print(f"{self.nome} não pode dormir, pois tá andando")
+                if self.dormindo != True:
+                    print(f"{self.nome} começou a dormir")
+                    self.dormindo = True
                 else:
-                    print(f"{self.nome} já ta dormindo")
+                    print(f"{self.nome} já está dormindo")
 
     def parou_comer (self):
         if self.comendo == True:
             print(f"agora {self.nome} parou de comer")
+            self.comendo = False
         else:
             print(f"{self.nome} já ta comendo {self.comida}")
     def parou_andar(self):
         if self.andando == True:
             print(f"{self.nome} parou de andar")
+            self.andando = False
         else:
-            print(f"{self.nome} já ta andando")
+            print(f"{self.nome} já ta parado")
 
     def parou_dormir(self):
         if self.dormindo == True:
             print(f"{self.nome} acordou")
+            self.dormindo = False
         else:
             print(f"{self.nome} já esta acordado")
+
 x = Pessoa ("Rodrigo", 100, 27)
-
-x.comer("feijao")
-x.dormir()
-x.parou_comer()
-x.dormir()
-x.parou_dormir()
-x.andar()
-
-
